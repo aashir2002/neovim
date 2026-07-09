@@ -41,10 +41,18 @@ return {
                 require("fzf-lua").grep_cword()
             end,
             desc = "FZF grep word under cursor"
-        }
+        },
+		{
+			"<leader>fs",
+			function()
+				require("fzf-lua").git_status()
+			end,
+			desc = "FZF git changed files",
+		},
 	},
 	config = function()
 		local fzf = require("fzf-lua")
+		local actions = require("fzf-lua.actions")
 
 		fzf.setup({
 			winopts = {
@@ -65,6 +73,17 @@ return {
 			fzf_colors = {
 				["hl"] = { "fg", "Search" },
 				["hl+"] = { "fg", "Search", "bold", "reverse" },
+			},
+			git = {
+				status = {
+					actions = {
+						["left"] = false,
+						["right"] = false,
+						["ctrl-x"] = false,
+						["alt-s"] = { fn = actions.git_stage_unstage, reload = true },
+						["alt-d"] = { fn = actions.git_reset, reload = true },
+					},
+				},
 			},
 		})
 	end,
