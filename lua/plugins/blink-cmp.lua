@@ -52,9 +52,9 @@ return {
 		},
 		completion = {
 			accept = { auto_brackets = { enabled = true } },
-			trigger = {
-				show_on_trigger_character = false,
-			},
+			-- trigger = {
+			-- 	show_on_trigger_character = false,
+			-- },
 			menu = { border = "rounded" },
 			documentation = {
 				auto_show = true,
